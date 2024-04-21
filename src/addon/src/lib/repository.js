@@ -6,7 +6,13 @@ const { Op } = Sequelize;
 const database = new Sequelize(
     databaseConfig.POSTGRES_URI,
     {
-        logging: false
+        logging: false,
+        dialect: "postgres", dialectOptions: {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false
+            }
+          }
     }
 );
 
